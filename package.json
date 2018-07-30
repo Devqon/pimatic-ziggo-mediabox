@@ -1,0 +1,32 @@
+{
+  "name": "pimatic-ziggo-mediabox",
+  "description": "Controlling a ziggo mediabox",
+  "author": "Sander Geerts",
+  "main": "ziggo-mediabox",
+  "files": [
+    "ziggo-mediabox.coffee",
+    "README.md",
+    "ziggo-mediabox-config-schema.coffee",
+    "ziggo-api.coffee",
+    "device-config-schema.coffee"
+  ],
+  "version": "0.1.0",
+  "homepage": "https://github.com/Devqon/pimatic-ziggo-mediabox",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Devqon/pimatic-ziggo-mediabox.git"
+  },
+  "configSchema": "ziggo-mediabox-config-schema.coffee",
+  "dependencies": {
+    "pimatic-plugin-commons": "^0.9.8",
+    "ziggo-mediabox": "^1.0.0"
+  },
+  "peerDependencies": {
+    "pimatic": "0.8.*"
+  },
+  "engines": {
+    "node": ">0.8.x",
+    "npm": ">1.1.x"
+  }
+}
