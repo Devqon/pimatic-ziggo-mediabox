@@ -9,22 +9,13 @@ module.exports = {
       buttons:
         description: "The inputs to select from"
         type: "array"
-        default: [
-          {
-            id: "TVPOWER"
-          }
-          {
-            id: "OK"
-          }
-        ]
+        default: []
         format: "table"
         items:
           type: "object"
           properties:
             id:
-              enum: [
-                "TVPOWER", "OK"
-              ]
+              enum: []
               description: "The input ids switchable by the remote"
             text:
               type: "string"
