@@ -10,21 +10,24 @@ module.exports = (env) ->
       @_base = commons.base @, "ZiggoApi"
 
     _connect: () =>
-      return new Promise (resolve, reject) =>
-        if @box && @box.isConnected()
+      if @box && @box.isConnected()
+        return new Promise (resolve, reject) =>
           resolve()
-        else
-          if !@box
-            @box = new box @config.ip
-          @box.connect().then =>
-            resolve()
-          .catch (errorResult) =>
-            reject(errorResult.error)
+      else
+        if !@box
+          @box = new box @config.ip
+        return @box.connect()
 
-    pressButton: (button) =>
+    disconnect: () =>
+      if @box && @box.isConnected()
+        return @xbox.disconnect()
+      return new Promise (resolve, reject) =>
+        resolve()
+
+    sendRequest: (command) =>
       return new Promise (resolve, reject) =>
         @_connect().then =>
-          @box.press_button button
+          @box.press_button command
           resolve()
         .catch (error) =>
           reject(error)

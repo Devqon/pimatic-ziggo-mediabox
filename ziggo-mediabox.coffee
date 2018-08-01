@@ -25,14 +25,13 @@ module.exports = (env) ->
   class ZiggoMediaboxRemote extends env.devices.ButtonsDevice
     constructor: (@config, @api) ->
       @_base = commons.base @, 'ZiggoMediaboxRemote'
-      @_base.info @config
 
       @name = @config.name
       @id = @config.id
 
-      buttons = @api.getAvailableButtons()
-      for b in buttons
-        @_base.info "Button #{b}"
+      for b in @config.buttons
+        b.text = b.id unless b.text?
+
       super(@config)
 
     buttonPressed: (buttonId) ->
@@ -46,10 +45,11 @@ module.exports = (env) ->
       throw new Error("No button with the id #{buttonId} found")
 
     destroy: () ->
+      @api.disconnect().then =>
+        @_base.debug "Disconnected ziggo api from remote device destroy"
       super()
+
     
-  # ###Finally
-  # Create a instance of my plugin
   ziggoMediaboxPlugin = new ZiggoMediaboxPlugin
-  # and return it to the framework.
+
   return ziggoMediaboxPlugin
