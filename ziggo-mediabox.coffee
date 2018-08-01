@@ -19,6 +19,7 @@ module.exports = (env) ->
       @framework.deviceManager.registerDeviceClass("ZiggoMediaboxRemote", {
         configDef: configDef,
         createCallback: (config) => 
+          @_base.info "Creating ziggo remote"
           return new ZiggoMediaboxRemote(config, @api)
       })
 
@@ -40,7 +41,7 @@ module.exports = (env) ->
         if b.id is buttonId
           @_lastPressedButton = b.id
           @emit 'button', b.id
-          return @api.pressButton(b.id)
+          return @api.sendRequest(b.id)
 
       throw new Error("No button with the id #{buttonId} found")
 

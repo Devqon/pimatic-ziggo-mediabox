@@ -27,7 +27,7 @@ module.exports = (env) ->
     sendRequest: (command) =>
       return new Promise (resolve, reject) =>
         @_connect().then =>
-          @box.press_button command
+          @box.pressButton command
           resolve()
         .catch (error) =>
           reject(error)
