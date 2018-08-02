@@ -10,6 +10,9 @@
     "ziggo-api.coffee",
     "device-config-schema.coffee"
   ],
+  "keywords": [
+    "pimatic", "ziggo", "mediabox", "upc"
+  ],
   "version": "0.1.0",
   "homepage": "https://github.com/Devqon/pimatic-ziggo-mediabox",
   "private": false,
@@ -23,7 +26,7 @@
     "ziggo-mediabox": "^1.0.0"
   },
   "peerDependencies": {
-    "pimatic": "0.8.*"
+    "pimatic": ">=0.8.0 <1.0.0"
   },
   "engines": {
     "node": ">0.8.x",
